@@ -4,6 +4,7 @@
   "private": true,
   "description": "Assignment project for redesigning the passport application experience.",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "test": "node scripts/smoke-test.js"
   }
 }

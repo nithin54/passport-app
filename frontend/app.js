@@ -179,23 +179,24 @@ function cloneTemplate(id) {
 }
 
 function render(screen) {
-  activateNav(screen);
-  const targetRoute = SCREEN_TO_ROUTE[screen];
+  const resolvedScreen = screens[screen] ? screen : "home";
+  activateNav(resolvedScreen);
+  const targetRoute = SCREEN_TO_ROUTE[resolvedScreen];
   if (targetRoute && window.location.pathname !== targetRoute) {
     window.history.pushState({}, "", targetRoute);
   }
   root.innerHTML = "";
-  root.appendChild(cloneTemplate(screens[screen]));
+  root.appendChild(cloneTemplate(screens[resolvedScreen]));
   bindSharedActions();
-  if (screen === "home") fillHome();
-  if (screen === "login") bindLogin();
-  if (screen === "onboarding") bindOnboarding();
-  if (screen === "dashboard") fillDashboard();
-  if (screen === "form") renderFormStep();
-  if (screen === "documents") fillDocuments();
-  if (screen === "appointment") bindAppointment();
-  if (screen === "confirmation") fillConfirmation();
-  if (screen === "receipt") fillReceipt();
+  if (resolvedScreen === "home") fillHome();
+  if (resolvedScreen === "login") bindLogin();
+  if (resolvedScreen === "onboarding") bindOnboarding();
+  if (resolvedScreen === "dashboard") fillDashboard();
+  if (resolvedScreen === "form") renderFormStep();
+  if (resolvedScreen === "documents") fillDocuments();
+  if (resolvedScreen === "appointment") bindAppointment();
+  if (resolvedScreen === "confirmation") fillConfirmation();
+  if (resolvedScreen === "receipt") fillReceipt();
 }
 
 function fillHome() {
@@ -284,7 +285,7 @@ function getInitialScreen() {
   if (secure.includes(routeScreen) && !state.token) {
     return "login";
   }
-  return routeScreen;
+  return screens[routeScreen] ? routeScreen : "home";
 }
 
 async function api(path, options = {}) {
@@ -705,16 +706,22 @@ function fillReceipt() {
   downloadBtn.disabled = !booked;
   downloadBtn.addEventListener("click", () => {
     if (!booked) return;
-    const lines = [
-      "Passport Application Appointment Receipt",
-      `Applicant: ${state.application.personalDetails.givenName} ${state.application.personalDetails.surname}`,
-      `Application ID: ${state.application.id}`,
-      `Passport Office: ${state.application.appointment.passportOffice}`,
-      `Appointment: ${state.application.appointment.date} ${state.application.appointment.time}`,
-      `Fee: ${state.application.receipt.fee}`,
-      `Issued At: ${formatDateTime(state.application.receipt.issuedAt)}`
-    ];
-    const blob = buildReceiptPdf(lines);
+    const blob = buildReceiptPdf({
+      applicantName: `${state.application.personalDetails.givenName} ${state.application.personalDetails.surname}`,
+      applicationId: state.application.id,
+      passportOffice: state.application.appointment.passportOffice,
+      appointmentDate: state.application.appointment.date,
+      appointmentTime: state.application.appointment.time,
+      fee: state.application.receipt.fee,
+      paymentMode: state.application.receipt.paymentMode,
+      issuedAt: formatDateTime(state.application.receipt.issuedAt),
+      status: state.application.tracking?.currentStatus || state.application.status,
+      city:
+        state.application.address?.city ||
+        state.user?.city ||
+        state.application.personalDetails?.placeOfIssuePreference ||
+        "N/A"
+    });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
@@ -724,60 +731,134 @@ function fillReceipt() {
   });
 }
 
-function buildReceiptPdf(lines) {
+function buildReceiptPdf(receipt) {
   const escapePdfText = (value) =>
-    value.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+    String(value || "")
+      .replace(/\\/g, "\\\\")
+      .replace(/\(/g, "\\(")
+      .replace(/\)/g, "\\)");
   const encoder = new TextEncoder();
 
+  const rows = [
+    { label: "Applicant Name", value: receipt.applicantName },
+    { label: "Application ID", value: receipt.applicationId },
+    { label: "Passport Office", value: receipt.passportOffice },
+    { label: "Appointment Date", value: receipt.appointmentDate },
+    { label: "Appointment Time", value: receipt.appointmentTime },
+    { label: "Fee Paid", value: `${receipt.fee} via ${receipt.paymentMode}` },
+    { label: "Issued At", value: receipt.issuedAt },
+    { label: "Current Status", value: receipt.status }
+  ];
+
   const backgroundStream = [
-    "0.98 0.95 0.91 rg",
+    "0.96 0.97 0.95 rg",
     "0 0 595 842 re f",
-    "0.87 0.46 0.14 rg",
-    "36 36 523 770 re f",
-    "1 0.99 0.97 rg",
-    "48 48 499 746 re f",
-    "0.82 0.90 0.89 RG",
-    "3 w",
-    "62 62 471 718 re S",
-    "0.94 0.90 0.84 rg",
-    "70 690 455 78 re f",
-    "0.07 0.31 0.29 RG",
-    "2 w",
-    "70 690 455 78 re S",
-    "0.90 0.96 0.95 rg",
-    "70 560 455 108 re f",
-    "0.82 0.90 0.89 RG",
-    "1.5 w",
-    "70 560 455 108 re S",
-    "70 426 455 108 re S",
-    "70 292 455 108 re S",
-    "70 158 455 108 re S",
-    "297 158 m 297 668 l S",
-    "0.82 0.73 0.62 rg",
-    "420 120 110 110 re f",
-    "0.90 0.84 0.76 rg",
-    "430 130 90 90 re f",
-    "0.86 0.94 0.92 rg",
+    "0.11 0.27 0.49 rg",
+    "28 28 539 786 re f",
+    "1 1 1 rg",
+    "40 40 515 762 re f",
+    "0.77 0.83 0.91 RG",
+    "1.4 w",
+    "52 52 491 738 re S",
+    "0.11 0.27 0.49 rg",
+    "52 722 491 56 re f",
+    "0.94 0.96 0.99 rg",
+    "52 674 491 34 re f",
+    "0.88 0.92 0.97 rg",
+    "52 612 491 42 re f",
+    "0.82 0.88 0.95 rg",
+    "52 128 491 42 re f",
+    "0.80 0.85 0.92 RG",
+    "0.8 w",
+    "52 612 491 42 re S",
+    "52 128 491 42 re S",
+    "0.90 0.93 0.97 rg",
+    "72 206 451 392 re f",
+    "0.84 0.88 0.94 RG",
+    "0.8 w",
+    "72 206 451 392 re S",
+    "0.92 0.95 0.98 rg",
+    "310 210 213 384 re f",
+    "0.84 0.88 0.94 RG",
+    "297 206 m 297 598 l S",
+    "72 549 m 523 549 l S",
+    "72 500 m 523 500 l S",
+    "72 451 m 523 451 l S",
+    "72 402 m 523 402 l S",
+    "72 353 m 523 353 l S",
+    "72 304 m 523 304 l S",
+    "72 255 m 523 255 l S",
+    "0.93 0.95 0.98 rg",
+    "414 188 95 18 re f",
+    "0.82 0.86 0.92 rg",
+    "82 730 42 40 re f",
+    "87 735 32 30 re f",
+    "0.75 0.80 0.88 rg",
+    "92 740 22 20 re f",
+    "0.86 0.90 0.95 rg",
     "BT",
-    "/F1 54 Tf",
-    "150 438 Td",
-    "0.92 g",
-    "(PASSPORT) Tj",
+    "/F1 42 Tf",
+    "135 430 Td",
+    "0.94 g",
+    "(PASSPORT SEVA) Tj",
     "ET"
   ].join("\n");
 
+  const textLines = [
+    { x: 136, y: 754, size: 14, color: "1 1 1 rg", text: "PASSPORT SEVA" },
+    { x: 136, y: 737, size: 9, color: "1 1 1 rg", text: "Ministry of External Affairs, Government of India" },
+    { x: 72, y: 686, size: 10, color: "0.11 0.27 0.49 rg", text: "APPOINTMENT ACKNOWLEDGMENT RECEIPT" },
+    { x: 72, y: 640, size: 9, color: "0.24 0.31 0.41 rg", text: `Issue city: ${receipt.city}` },
+    { x: 400, y: 640, size: 9, color: "0.24 0.31 0.41 rg", text: `Receipt no: ${receipt.applicationId}` }
+  ];
+
+  const rowCommands = [];
+  let rowY = 576;
+  rows.forEach((row) => {
+    rowCommands.push(
+      "BT",
+      "0.30 0.38 0.49 rg",
+      "/F1 9 Tf",
+      `72 ${rowY} Td`,
+      `(${escapePdfText(row.label)}) Tj`,
+      "ET",
+      "BT",
+      "0.10 0.16 0.25 rg",
+      "/F1 10 Tf",
+      `310 ${rowY} Td`,
+      `(${escapePdfText(row.value)}) Tj`,
+      "ET"
+    );
+    rowY -= 49;
+  });
+
   const textStream = [
+    ...textLines.flatMap((line) => [
+      "BT",
+      line.color,
+      `/F1 ${line.size} Tf`,
+      `${line.x} ${line.y} Td`,
+      `(${escapePdfText(line.text)}) Tj`,
+      "ET"
+    ]),
+    ...rowCommands,
     "BT",
-    "0.09 0.16 0.24 rg",
-    "/F1 22 Tf",
-    "50 780 Td",
-    `(${escapePdfText(lines[0])}) Tj`,
-    "/F1 12 Tf",
-    "0 -34 Td",
-    ...lines.slice(1).map((line, index) => {
-      const prefix = index === 0 ? "" : "0 -22 Td\n";
-      return `${prefix}(${escapePdfText(line)}) Tj`;
-    }),
+    "0.20 0.29 0.40 rg",
+    "/F1 9 Tf",
+    "72 148 Td",
+    "(Carry this receipt and original supporting documents to the passport office.) Tj",
+    "ET",
+    "BT",
+    "0.20 0.29 0.40 rg",
+    "/F1 8 Tf",
+    "72 136 Td",
+    "(Please arrive at least 15 minutes before the scheduled slot for document verification.) Tj",
+    "ET",
+    "BT",
+    "0.28 0.34 0.45 rg",
+    "/F1 8 Tf",
+    "72 102 Td",
+    "(System-generated receipt. No physical signature is required for this acknowledgment.) Tj",
     "ET"
   ].join("\n");
 
