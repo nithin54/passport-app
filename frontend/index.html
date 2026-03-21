@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passport Seva Reimagined</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">PS</div>
+          <div>
+            <p class="eyebrow">Anshumat Foundation Assignment</p>
+            <h1>Passport Seva Reimagined</h1>
+          </div>
+        </div>
+        <nav class="nav">
+          <button class="nav-link active" data-screen="home">Home</button>
+          <button class="nav-link" data-screen="dashboard">Dashboard</button>
+          <button class="nav-link" data-screen="form">Application</button>
+          <button class="nav-link" data-screen="documents">Documents</button>
+          <button class="nav-link" data-screen="appointment">Appointment</button>
+          <a class="nav-link nav-anchor" href="/login">Login</a>
+        </nav>
+      </header>
+
+      <main id="screen-root"></main>
+    </div>
+
+    <template id="home-template">
+      <section class="portal-shell">
+        <div class="utility-bar">
+          <div id="portal-datetime">Saturday, March 21, 2026 | 12:44:58 PM</div>
+          <div class="utility-links">
+            <span>Skip to Main Content</span>
+            <span>Screen Reader Access</span>
+            <span>Sitemap</span>
+            <span>A-</span>
+            <span>A</span>
+            <span>A+</span>
+            <span>Hindi</span>
+            <strong>National Call Center: 1800-258-1800</strong>
+          </div>
+        </div>
+
+        <section class="portal-banner">
+          <div class="portal-branding">
+            <div class="portal-logo">Passport<br />Seva</div>
+            <div>
+              <p class="eyebrow">Ministry of External Affairs</p>
+              <h2>Government of India Passport Services Portal</h2>
+              <p class="lede">Delivering passport services to citizens in a timely, accessible, and reliable manner.</p>
+            </div>
+          </div>
+          <div class="portal-actions">
+            <a class="primary-btn cta-link" href="/login">Apply For Passport</a>
+            <a class="secondary-btn cta-link" href="/dashboard">Track Application</a>
+          </div>
+        </section>
+
+        <section class="notice-strip">
+          <div class="notice-label">Important Updates</div>
+          <div class="notice-text">
+            PSK Tirupati is shifting to a new location with effect from 23 March 2026. Applicants are requested to visit the new premises for scheduled appointments. PSK Pune is shifting to its new location with effect from 30 March 2026. Applicants with appointments at Jalandhar are requested to verify the updated address on the RPO page before visiting.
+          </div>
+        </section>
+
+        <section class="welcome-grid">
+          <article class="welcome-panel">
+            <p class="eyebrow">Welcome to Passport Seva</p>
+            <h3>Access essential passport services from one trusted portal</h3>
+            <p class="lede">
+              Start an application, check appointment availability, track status, understand passport services,
+              and get support for the complete journey from registration to issuance.
+            </p>
+          </article>
+          <article class="quick-links-panel">
+            <p class="eyebrow">Quick Links</p>
+            <div class="quick-links-grid">
+              <a class="quick-link-card" href="/login">Apply For Passport</a>
+              <a class="quick-link-card" href="/appointment">Check Appointment Availability</a>
+              <a class="quick-link-card" href="/dashboard">Track Passport Application</a>
+              <a class="quick-link-card" href="/receipt">Download Receipt</a>
+              <a class="quick-link-card" href="/document-upload">Document Upload</a>
+              <a class="quick-link-card" href="/design-decisions">Know About Our Services</a>
+            </div>
+          </article>
+        </section>
+
+        <section class="services-block">
+          <div class="section-title-row">
+            <div>
+              <p class="eyebrow">Passport Services</p>
+              <h3>Choose the service you need</h3>
+            </div>
+          </div>
+          <div class="services-grid">
+            <div class="service-card"><strong>Fresh / Re-issue Ordinary Passport</strong><span>Start new passport or renewal requests</span></div>
+            <div class="service-card"><strong>Tatkaal Passport</strong><span>Expedited issue for eligible applicants</span></div>
+            <div class="service-card"><strong>Diplomatic / Official Passport</strong><span>Official travel document processing</span></div>
+            <div class="service-card"><strong>Police Clearance Certificate</strong><span>Request PCC for employment and migration</span></div>
+            <div class="service-card"><strong>Passport Surrender / Identity Certificate</strong><span>Related certificate and surrender services</span></div>
+            <div class="service-card"><strong>Global Entry Program Verification</strong><span>Verification support for eligible travelers</span></div>
+          </div>
+        </section>
+
+        <section class="stats-row">
+          <div class="stat-box"><span>Appointments Released</span><strong>570118+</strong></div>
+          <div class="stat-box"><span>Applications Processed</span><strong>354722+</strong></div>
+          <div class="stat-box"><span>Passports Issued</span><strong>288502+</strong></div>
+        </section>
+
+        <section class="grid-two portal-grid">
+          <article class="card">
+            <p class="eyebrow">Public Notice</p>
+            <div class="feature-stack">
+              <div class="feature-row"><strong>Tatkaal Passport</strong><span>Check eligibility and supporting documents required for the Tatkaal scheme.</span></div>
+              <div class="feature-row"><strong>Normal / Tatkaal Appointment Time</strong><span>View passport office specific appointment opening schedules.</span></div>
+              <div class="feature-row"><strong>Advisory for Indians Going Abroad</strong><span>Important guidance for citizens travelling overseas for employment.</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Status and Access</p>
+            <div class="feature-stack">
+              <div class="feature-row"><strong>Application Dashboard</strong><span>Monitor your draft, status, and progress timeline in one place.</span></div>
+              <div class="feature-row"><strong>Appointment Receipt</strong><span>Download your receipt as PDF and carry it for your visit.</span></div>
+              <div class="feature-row"><strong>Support and Guidance</strong><span>Understand documents, appointments, and post-submission status more clearly.</span></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="grid-two portal-grid">
+          <article class="card">
+            <p class="eyebrow">Help Center</p>
+            <h3>Frequently asked questions</h3>
+            <div class="faq-list">
+              <div class="faq-item"><strong>What documents do I need for a first-time passport?</strong><p>Identity proof, address proof, date-of-birth proof, and a recent photo.</p></div>
+              <div class="faq-item"><strong>Can I save and continue later?</strong><p>Yes. The application autosaves while you type and the dashboard shows your latest saved state.</p></div>
+              <div class="faq-item"><strong>When can I book my appointment?</strong><p>After completing the form review and uploading required documents.</p></div>
+              <div class="faq-item"><strong>How do I track status after submission?</strong><p>The dashboard includes a timeline and post-submission tracker for review, police verification, and dispatch stages.</p></div>
+            </div>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Find a Passport Seva Location</p>
+            <h3>500+ service locations available</h3>
+            <div class="locator-box">
+              <input id="location-search-input" type="text" placeholder="Enter your PIN code" inputmode="numeric" />
+              <button id="location-search-btn" class="primary-btn" type="button">Search Location</button>
+            </div>
+            <div id="location-results" class="location-results top-space"></div>
+            <div class="feature-stack top-space">
+              <div class="feature-row"><strong>Citizen Help Center</strong><span>24/7 support for your passport journey</span></div>
+              <div class="feature-row"><strong>mPassport Seva App</strong><span>Access guidance, status, and center information on mobile</span></div>
+              <div class="feature-row"><strong>Feedback / Grievance</strong><span>Register complaints, feedback, and support requests</span></div>
+            </div>
+          </article>
+        </section>
+
+        <footer class="site-footer portal-footer">
+          <div class="footer-brand">
+            <strong>Passport Seva</strong>
+            <span>Ministry of External Affairs, Government of India</span>
+          </div>
+          <div class="footer-links">
+            <span>Ministry of External Affairs</span>
+            <span>National Portal of India</span>
+            <span>Visa Services</span>
+            <span>Terms & Conditions</span>
+            <span>Privacy Policy</span>
+            <span>FAQs</span>
+            <span>Feedback / Grievance</span>
+            <span>National Call Center: 1800-258-1800</span>
+          </div>
+          <div class="footer-meta">
+            <span>© Content owned by Ministry of External Affairs, Government of India</span>
+            <span>Visitors: 31126795</span>
+            <span>Last updated on: 20/03/2026</span>
+          </div>
+        </footer>
+      </section>
+    </template>
+
+    <template id="login-template">
+      <section class="single">
+        <article class="card auth-card">
+          <p class="eyebrow">Login / Signup</p>
+          <h3>Use the seeded demo account</h3>
+          <p class="muted">
+            If login does not respond, start <strong>run-local.cmd</strong> and open the
+            app from <strong>http://localhost:3000</strong>.
+          </p>
+          <form id="login-form" class="stack">
+            <label>Email<input type="email" name="email" value="hire-me@anshumat.org" required /></label>
+            <label>Password<input type="password" name="password" value="HireMe@2025!" required /></label>
+            <p class="muted">Production direction: mobile OTP preferred, but demo login is provided for evaluation.</p>
+            <button class="primary-btn" type="submit">Continue to onboarding</button>
+            <p id="login-error" class="error-text"></p>
+          </form>
+        </article>
+      </section>
+    </template>
+
+    <template id="onboarding-template">
+      <section class="grid-two">
+        <article class="card">
+          <p class="eyebrow">Welcome to Passport Services</p>
+          <h3>See the whole journey before you begin</h3>
+          <div class="wire-grid">
+            <span>1. Basic profile</span><span>2. Form sections</span><span>3. Review</span><span>4. Documents</span><span>5. Appointment</span><span>6. Receipt</span>
+          </div>
+          <div class="card inset">
+            <h4>Keep these ready</h4>
+            <ul class="plain-list">
+              <li>Identity proof</li>
+              <li>Address proof</li>
+              <li>Date of birth proof</li>
+              <li>Recent photo</li>
+            </ul>
+          </div>
+        </article>
+        <article class="card">
+          <form id="onboarding-form" class="stack">
+            <label>Full Name<input type="text" name="name" autocomplete="name" required /></label>
+            <label>Date of Birth<input type="date" name="dob" required /></label>
+            <label>City<input type="text" name="city" autocomplete="address-level2" required /></label>
+            <button class="primary-btn" type="submit">Start passport application</button>
+          </form>
+        </article>
+      </section>
+    </template>
+
+    <template id="dashboard-template">
+      <section class="grid-two">
+        <article class="card">
+          <p class="eyebrow">Dashboard</p>
+          <h3 id="dashboard-title">Your application at a glance</h3>
+          <div class="tile-grid">
+            <div class="tile"><span>Current status</span><strong id="status-text"></strong></div>
+            <div class="tile"><span>Application ID</span><strong id="application-id"></strong></div>
+            <div class="tile"><span>Last saved</span><strong id="last-saved"></strong></div>
+          </div>
+          <div class="progress-wrap">
+            <div class="progress-meta"><span>Progress saved</span><span id="progress-label"></span></div>
+            <div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+          </div>
+          <div class="actions">
+            <button class="primary-btn" data-screen="form">Continue application</button>
+            <button class="secondary-btn" data-screen="receipt">View receipt</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Status Tracking</p>
+          <h3>Recent activity</h3>
+          <ul id="activity-list" class="plain-list"></ul>
+          <div id="timeline-list" class="timeline-list top-space"></div>
+        </article>
+      </section>
+
+      <section class="grid-two">
+        <article class="card">
+          <p class="eyebrow">Record Access</p>
+          <h3>Cloud export and follow-up</h3>
+          <div id="export-actions" class="tile-grid"></div>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Next Action</p>
+          <h3>What should the applicant do next?</h3>
+          <p id="next-action-copy" class="lede"></p>
+        </article>
+      </section>
+
+      <section class="grid-two">
+        <article class="card">
+          <p class="eyebrow">Support</p>
+          <h3>Help that appears before users get stuck</h3>
+          <div class="feature-stack">
+            <div class="feature-row"><strong>Document rules</strong><span>Accepted file types and proof purpose are shown inline</span></div>
+            <div class="feature-row"><strong>Save confidence</strong><span>Progress, last saved time, and timeline status remain visible</span></div>
+            <div class="feature-row"><strong>Visit readiness</strong><span>Receipt and originals checklist stay accessible from the dashboard</span></div>
+          </div>
+        </article>
+        <article class="image-card">
+          <img src="./assets/hero-passport.svg" alt="Passport dashboard and progress illustration" />
+        </article>
+      </section>
+
+      <section class="card">
+        <p class="eyebrow">Post-Submission Tracking</p>
+        <h3 id="tracking-title">Application status tracker</h3>
+        <div id="tracking-list" class="tracking-grid top-space"></div>
+      </section>
+    </template>
+
+    <template id="form-template">
+      <section class="hero">
+        <aside class="card sticky-panel">
+          <p class="eyebrow">Application Form</p>
+          <h3>Guided multi-step completion</h3>
+          <div id="step-list" class="stack step-list"></div>
+          <div id="save-pill" class="save-pill">Saved</div>
+          <p class="muted">Autosave runs while the applicant is typing.</p>
+        </aside>
+
+        <article class="card">
+          <div class="section-head">
+            <p class="eyebrow">Step-by-step form</p>
+            <h3 id="form-step-title"></h3>
+            <p id="form-step-copy" class="lede"></p>
+          </div>
+          <div id="form-stage-root"></div>
+          <div class="actions top-space">
+            <button id="back-step-btn" class="secondary-btn" type="button">Back</button>
+            <button id="save-next-btn" class="primary-btn" type="button">Save and continue</button>
+          </div>
+          <p id="form-feedback" class="success-text" aria-live="polite"></p>
+        </article>
+      </section>
+    </template>
+
+    <template id="documents-template">
+      <section class="grid-two">
+        <article class="card">
+          <p class="eyebrow">Document Upload</p>
+          <h3>Checklist-first upload flow</h3>
+          <div id="document-list" class="stack"></div>
+          <div class="actions top-space">
+            <button id="docs-to-appointment-btn" class="primary-btn" type="button">Continue to appointment</button>
+          </div>
+          <p id="document-feedback" class="success-text" aria-live="polite"></p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Clarity Improvements</p>
+          <div class="image-card embedded-image">
+            <img src="./assets/document-checklist.svg" alt="Document checklist illustration" />
+          </div>
+          <div class="stack">
+            <div class="card inset"><strong>Purpose-led guidance</strong><p>Each proof explains why it matters and how to prepare it.</p></div>
+            <div class="card inset"><strong>Immediate status feedback</strong><p>Uploads update the dashboard, save state, and timeline right away.</p></div>
+            <div class="card inset"><strong>Lower confusion</strong><p>The user can see what is pending without scanning policy-heavy text.</p></div>
+          </div>
+        </article>
+      </section>
+    </template>
+
+    <template id="appointment-template">
+      <section class="grid-two">
+        <article class="card">
+          <p class="eyebrow">Appointment Booking</p>
+          <h3>Choose a slot with context</h3>
+          <form id="appointment-form" class="stack">
+            <label>Passport Office<select name="passportOffice" required><option value="">Choose an office</option><option>Chennai Regional Passport Office</option><option>Bengaluru Passport Seva Kendra</option><option>Hyderabad Passport Seva Kendra</option></select></label>
+            <label>Appointment Date<input type="date" name="date" required /></label>
+            <label>Time Slot<select name="time" required><option value="">Choose a time slot</option><option>09:30 AM - 09:45 AM</option><option>10:30 AM - 10:45 AM</option><option>11:45 AM - 12:00 PM</option></select></label>
+            <button class="primary-btn" type="submit">Book appointment</button>
+            <p id="appointment-feedback" class="success-text" aria-live="polite"></p>
+          </form>
+        </article>
+        <article class="card">
+          <div class="image-card embedded-image">
+            <img src="./assets/appointment-desk.svg" alt="Appointment booking desk illustration" />
+          </div>
+          <div class="card inset">
+            <h4>Before you visit</h4>
+            <ul class="plain-list">
+              <li>Bring originals of all uploaded proofs</li>
+              <li>Arrive 15 minutes early</li>
+              <li>Keep your application ID and receipt handy</li>
+            </ul>
+          </div>
+          <div class="card inset">
+            <h4>Real-world improvements</h4>
+            <ul class="plain-list">
+              <li>Users book only after form review and document readiness</li>
+              <li>Guidance is shown next to booking controls, not hidden elsewhere</li>
+              <li>Confirmation and receipt access follow immediately after booking</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+    </template>
+
+    <template id="confirmation-template">
+      <section class="single">
+        <article class="card confirm">
+          <p class="eyebrow">Application Submitted</p>
+          <h3>Your application is ready for in-person verification.</h3>
+          <p id="confirmation-copy" class="lede"></p>
+          <div class="tile-grid">
+            <div class="tile"><span>Application ID</span><strong id="confirmation-id"></strong></div>
+            <div class="tile"><span>Appointment</span><strong id="confirmation-slot"></strong></div>
+            <div class="tile"><span>Receipt</span><strong id="confirmation-fee"></strong></div>
+          </div>
+          <div class="actions">
+            <button class="primary-btn" data-screen="receipt">Open receipt</button>
+            <button class="secondary-btn" data-screen="dashboard">Back to dashboard</button>
+          </div>
+        </article>
+      </section>
+    </template>
+
+    <template id="receipt-template">
+      <section class="single">
+        <article class="card receipt-card">
+          <div class="receipt-head">
+            <div>
+              <p class="eyebrow">Appointment Receipt</p>
+              <h3>Passport application acknowledgment</h3>
+            </div>
+            <button id="download-receipt-btn" class="secondary-btn" type="button">Download receipt</button>
+          </div>
+          <p id="receipt-status-note" class="muted top-space"></p>
+          <div class="receipt-grid">
+            <div class="receipt-block"><span>Applicant</span><strong id="receipt-name"></strong></div>
+            <div class="receipt-block"><span>Application ID</span><strong id="receipt-id"></strong></div>
+            <div class="receipt-block"><span>Passport Office</span><strong id="receipt-office"></strong></div>
+            <div class="receipt-block"><span>Appointment</span><strong id="receipt-slot"></strong></div>
+            <div class="receipt-block"><span>Fee</span><strong id="receipt-fee"></strong></div>
+            <div class="receipt-block"><span>Issued at</span><strong id="receipt-issued"></strong></div>
+          </div>
+          <p class="muted">The applicant can download this receipt, revisit it from the dashboard, or share the application ID when needed.</p>
+          <div class="service-strip top-space">
+            <div><span>Application ID</span><strong>Shareable</strong></div>
+            <div><span>Receipt</span><strong>Downloadable</strong></div>
+            <div><span>Visit status</span><strong>Ready for appointment</strong></div>
+          </div>
+        </article>
+      </section>
+    </template>
+
+    <template id="architecture-template">
+      <section class="grid-two">
+        <article class="card">
+          <p class="eyebrow">Design Decisions</p>
+          <h3>Why this flow is better</h3>
+          <div class="stack">
+            <div class="card inset"><strong>Progressive disclosure</strong><p>Applicants only see one decision or form section at a time, which reduces cognitive overload.</p></div>
+            <div class="card inset"><strong>Real form structure</strong><p>Personal, address, background, and emergency contact details mirror real application thinking.</p></div>
+            <div class="card inset"><strong>Review before commitment</strong><p>A review step catches mistakes before documents and appointments lock in the submission path.</p></div>
+            <div class="card inset"><strong>Confidence after submission</strong><p>Status timeline, export access, and downloadable receipt support the entire journey, not just the form.</p></div>
+          </div>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Accessibility and Support</p>
+          <h3>Built to feel clearer and calmer</h3>
+          <div class="stack">
+            <div class="card inset"><strong>Readable visual hierarchy</strong><p>Large headlines, clear grouping, and strong spacing improve scanning for non-tech-savvy users.</p></div>
+            <div class="card inset"><strong>Plain-language copy</strong><p>Policy-heavy wording is translated into human, task-focused guidance.</p></div>
+            <div class="card inset"><strong>Responsive behavior</strong><p>The layout stacks well on smaller screens so applicants can continue across devices.</p></div>
+          </div>
+        </article>
+      </section>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

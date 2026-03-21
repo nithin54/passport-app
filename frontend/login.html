@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passport Seva Reimagined - Login</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">PS</div>
+          <div>
+            <p class="eyebrow">Anshumat Foundation Assignment</p>
+            <h1>Passport Seva Reimagined</h1>
+          </div>
+        </div>
+        <nav class="nav">
+          <a class="nav-link nav-anchor" href="/">Home</a>
+          <a class="nav-link nav-anchor active" href="/login">Login</a>
+        </nav>
+      </header>
+
+      <main class="single page-space">
+        <article class="card auth-card">
+          <p class="eyebrow">Separate Login Page</p>
+          <h3>Sign in with the demo evaluator account</h3>
+          <p class="muted">
+            This standalone login page is provided for quick evaluation and direct access.
+          </p>
+
+          <div class="card inset top-space">
+            <strong>Demo Login</strong>
+            <p>Email: <code>hire-me@anshumat.org</code></p>
+            <p>Password: <code>HireMe@2025!</code></p>
+          </div>
+
+          <form id="login-form" class="stack top-space">
+            <label>Email<input type="email" name="email" value="hire-me@anshumat.org" autocomplete="email" required /></label>
+            <label>Password<input type="password" name="password" value="HireMe@2025!" autocomplete="current-password" required /></label>
+            <div class="actions">
+              <button id="demo-login-btn" class="secondary-btn" type="button">Use demo login</button>
+              <button class="primary-btn" type="submit">Continue to dashboard</button>
+            </div>
+            <p id="login-error" class="error-text" aria-live="polite"></p>
+          </form>
+        </article>
+      </main>
+    </div>
+
+    <script src="./login.js"></script>
+  </body>
+</html>

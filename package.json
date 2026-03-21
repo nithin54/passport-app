@@ -1,0 +1,9 @@
+{
+  "name": "passport-application-experience",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Assignment project for redesigning the passport application experience.",
+  "scripts": {
+    "start": "node backend/server.js"
+  }
+}
