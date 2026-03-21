@@ -22,6 +22,9 @@ This project is a full-stack assignment prototype that redesigns the passport ap
 For mobile testing on the same Wi-Fi, open the printed LAN URL such as
 `http://192.168.x.x:3000/homepage`
 
+For mobile testing on a different network, start a public tunnel and use the
+generated HTTPS URL.
+
 No extra installation is required.
 
 ### Windows fallback launcher
@@ -32,6 +35,25 @@ If your terminal setup has trouble keeping `npm start` open, run:
 
 This starts the same app directly with Node and prints the local URL and demo login.
 It also prints a LAN URL for phone testing when your device is on the same network.
+
+## Test Cases
+
+Run the smoke test suite with:
+
+- `npm test`
+
+This checks:
+
+- page routes
+- health endpoint
+- demo login
+- bootstrap data
+- onboarding save
+- application draft save
+- document upload
+- appointment booking
+- export data
+- final booked state
 
 ## Demo Login
 
@@ -92,7 +114,8 @@ Persistent support content:
 - Document checklist with purpose, status, and format guidance
 - Dashboard-driven status timeline and next-action guidance
 - Export-style record access after submission
-- Downloadable appointment receipt
+- Downloadable appointment receipt with PDF export
+- LAN-friendly mobile testing and public off-network tunnel support
 
 ### Design Decisions
 
@@ -107,3 +130,4 @@ Persistent support content:
 - This is an assignment prototype, not a production passport system.
 - The backend uses in-memory state for easy reviewer setup.
 - The interface intentionally rethinks the flow instead of copying the existing Passport Seva design exactly.
+- For same-network mobile access, Windows Firewall may need to allow TCP port `3000`.
