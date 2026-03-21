@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const os = require("os");
 const { URL } = require("url");
 
 const frontendDir = path.join(__dirname, "..", "frontend");
@@ -588,8 +589,13 @@ const server = http.createServer((req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-server.listen(port, () => {
+const host = process.env.HOST || "0.0.0.0";
+server.listen(port, host, () => {
+  const lanAddress = getLanAddress();
   console.log(`Passport application experience running at http://localhost:${port}`);
+  if (host === "0.0.0.0" && lanAddress) {
+    console.log(`Mobile test URL: http://${lanAddress}:${port}/homepage`);
+  }
 });
 
 server.on("error", (error) => {
@@ -606,6 +612,18 @@ function shutdown() {
   server.close(() => {
     process.exit(0);
   });
+}
+
+function getLanAddress() {
+  const interfaces = os.networkInterfaces();
+  for (const entries of Object.values(interfaces)) {
+    for (const entry of entries || []) {
+      if (entry.family === "IPv4" && !entry.internal) {
+        return entry.address;
+      }
+    }
+  }
+  return null;
 }
 
 process.on("SIGINT", shutdown);

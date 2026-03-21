@@ -19,6 +19,9 @@ This project is a full-stack assignment prototype that redesigns the passport ap
 2. Run `npm start`
 3. Visit `http://localhost:3000/homepage`
 
+For mobile testing on the same Wi-Fi, open the printed LAN URL such as
+`http://192.168.x.x:3000/homepage`
+
 No extra installation is required.
 
 ### Windows fallback launcher
@@ -28,6 +31,7 @@ If your terminal setup has trouble keeping `npm start` open, run:
 - `run-local.cmd`
 
 This starts the same app directly with Node and prints the local URL and demo login.
+It also prints a LAN URL for phone testing when your device is on the same network.
 
 ## Demo Login
 
