@@ -10,9 +10,7 @@ const API_BASE = (() => {
   return "";
 })();
 
-if (window.location.protocol === "file:") {
-  window.location.replace(LOCAL_APP_URL);
-}
+const canUseClientRouting = window.location.protocol !== "file:";
 
 const FORM_STEPS = [
   {
@@ -182,7 +180,7 @@ function render(screen) {
   const resolvedScreen = screens[screen] ? screen : "home";
   activateNav(resolvedScreen);
   const targetRoute = SCREEN_TO_ROUTE[resolvedScreen];
-  if (targetRoute && window.location.pathname !== targetRoute) {
+  if (canUseClientRouting && targetRoute && window.location.pathname !== targetRoute) {
     window.history.pushState({}, "", targetRoute);
   }
   root.innerHTML = "";
