@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" fill="none">
+  <rect width="640" height="420" rx="32" fill="#EAF7FF"/>
+  <rect x="52" y="50" width="536" height="320" rx="26" fill="#FFFFFF" stroke="#CAE6F8"/>
+  <rect x="86" y="82" width="194" height="256" rx="22" fill="#1A5C90"/>
+  <text x="118" y="118" fill="#EAF7FF" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Passport Seva</text>
+  <circle cx="183" cy="164" r="40" fill="#E2A977"/>
+  <path d="M145 254C157 224 171 212 183 212C195 212 209 224 221 254" fill="#F4FAFD"/>
+  <rect x="110" y="278" width="128" height="10" rx="5" fill="#C6E2F4"/>
+  <rect x="110" y="298" width="94" height="10" rx="5" fill="#C6E2F4"/>
+  <rect x="320" y="98" width="210" height="46" rx="16" fill="#F0F9FF" stroke="#D4EBF9"/>
+  <rect x="320" y="164" width="210" height="68" rx="18" fill="#F9FCFE" stroke="#D9EDF9"/>
+  <rect x="340" y="184" width="92" height="12" rx="6" fill="#7BBBEA"/>
+  <rect x="340" y="206" width="154" height="10" rx="5" fill="#D7ECFA"/>
+  <rect x="320" y="252" width="98" height="72" rx="16" fill="#ECF7FD" stroke="#D4EBF9"/>
+  <rect x="432" y="252" width="98" height="72" rx="16" fill="#FFF8EE" stroke="#EECF9F"/>
+</svg>

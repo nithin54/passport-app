@@ -1,0 +1,13 @@
+{
+  "name": "passport-app",
+  "version": "1.0.0",
+  "description": "Passport Application Web App",
+  "scripts": {
+    "dev": "node backend/server.js",
+    "start": "node backend/server.js",
+    "test": "node test.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

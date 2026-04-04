@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="320" y1="0" x2="320" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8F6FF"/>
+      <stop offset="1" stop-color="#FDFEFE"/>
+    </linearGradient>
+    <linearGradient id="card" x1="110" y1="80" x2="250" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#114A77"/>
+      <stop offset="1" stop-color="#2A78B4"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="32" fill="url(#bg)"/>
+  <rect x="42" y="42" width="556" height="336" rx="28" fill="#FFFFFF" stroke="#CBE5F6"/>
+  <rect x="74" y="76" width="198" height="250" rx="22" fill="url(#card)"/>
+  <text x="102" y="116" fill="#EAF7FF" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700">Passport Seva</text>
+  <circle cx="172" cy="164" r="42" fill="#E8B180"/>
+  <path d="M130 254C140 226 158 212 172 212C186 212 204 226 214 254" fill="#F3F9FD"/>
+  <rect x="102" y="280" width="144" height="10" rx="5" fill="#C5E1F3"/>
+  <rect x="102" y="300" width="114" height="10" rx="5" fill="#C5E1F3"/>
+  <rect x="308" y="86" width="246" height="54" rx="18" fill="#EFF8FE" stroke="#D0E9F9"/>
+  <text x="332" y="118" fill="#114A77" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Application Dashboard</text>
+  <rect x="308" y="160" width="246" height="74" rx="20" fill="#F9FCFE" stroke="#DCEEF9"/>
+  <rect x="330" y="182" width="104" height="14" rx="7" fill="#7AB9EB"/>
+  <rect x="330" y="206" width="192" height="12" rx="6" fill="#D9EDF9"/>
+  <rect x="308" y="252" width="118" height="86" rx="18" fill="#EDF7FD" stroke="#D0E9F9"/>
+  <rect x="436" y="252" width="118" height="86" rx="18" fill="#FFF9F1" stroke="#F0D5AE"/>
+  <text x="326" y="276" fill="#1B5A8F" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Documents</text>
+  <text x="454" y="276" fill="#A0681F" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">Appointment</text>
+  <rect x="326" y="288" width="80" height="12" rx="6" fill="#7AB9EB"/>
+  <rect x="326" y="308" width="64" height="10" rx="5" fill="#D7ECFA"/>
+  <rect x="454" y="290" width="68" height="34" rx="12" fill="#F2AA46"/>
+  <path d="M469 307L483 319L508 295" stroke="#FFF7E6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

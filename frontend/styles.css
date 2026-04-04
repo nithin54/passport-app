@@ -1,0 +1,212 @@
+:root {
+  --ink-900: #11263c;
+  --ink-700: #28557b;
+  --ink-500: #4e7396;
+  --surface-100: rgba(255, 255, 255, 0.95);
+  --surface-200: rgba(247, 250, 252, 0.96);
+  --surface-line: rgba(24, 55, 86, 0.14);
+  --saffron: #e58c2d;
+  --green: #1f6d4f;
+  --red: #b54747;
+  --shadow-lg: 0 24px 60px rgba(16, 36, 58, 0.12);
+  --shadow-md: 0 10px 28px rgba(16, 36, 58, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--ink-900);
+  background:
+    radial-gradient(circle at top right, rgba(229, 140, 45, 0.14), transparent 28%),
+    linear-gradient(180deg, #eef4f9 0%, #f8fbfd 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app-shell {
+  width: min(980px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.govt-page {
+  display: grid;
+  gap: 24px;
+}
+
+.govt-panel,
+.hero-panel,
+.info-card,
+.summary-card {
+  background: linear-gradient(180deg, var(--surface-100), var(--surface-200));
+  border: 1px solid var(--surface-line);
+  box-shadow: var(--shadow-lg);
+  border-radius: 28px;
+}
+
+.govt-panel,
+.hero-panel {
+  padding: 28px;
+}
+
+.hero-panel {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.narrow-panel {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--saffron);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.lede,
+.muted-text {
+  color: var(--ink-500);
+}
+
+.stack {
+  display: grid;
+  gap: 16px;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.top-gap {
+  margin-top: 18px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.summary-card,
+.info-card {
+  padding: 18px;
+}
+
+.summary-card span,
+.info-card span {
+  display: block;
+  color: var(--ink-500);
+  margin-top: 6px;
+}
+
+.govt-button-primary,
+.govt-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.95rem 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.govt-button-primary {
+  background: linear-gradient(135deg, #153a5d, #0f2740);
+  color: white;
+}
+
+.govt-button-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink-900);
+  border: 1px solid rgba(24, 55, 86, 0.18);
+}
+
+.govt-input {
+  width: 100%;
+  border: 1px solid rgba(40, 85, 123, 0.24);
+  border-radius: 18px;
+  padding: 0.95rem 1rem;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.loading {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  color: var(--ink-500);
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: var(--red);
+  min-height: 1.25rem;
+}
+
+.saved {
+  color: var(--green);
+  min-height: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .app-shell {
+    width: min(980px, calc(100vw - 20px));
+    padding-top: 16px;
+  }
+
+  .govt-panel,
+  .hero-panel {
+    padding: 20px;
+  }
+
+  .hero-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-header {
+    flex-direction: column;
+  }
+}
